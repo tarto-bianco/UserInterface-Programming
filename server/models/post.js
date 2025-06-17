@@ -23,7 +23,7 @@ async function likePost(postId) {
         throw new Error("Post not found");
     }
     post.likes += 1;
-    await Post.findOne(postId, { likes: post.likes + 1 });
+    await Post.updateOne({"_id": postId}, {$set: {likes: post.likes}});
     return post;
 }
 

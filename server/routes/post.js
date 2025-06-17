@@ -3,33 +3,33 @@ const Post = require('../models/post'); //accesses functions in user model file
 const router = express.Router();
 
 router
-  .post('/create', async (req, res) => {
+  .post('/createPost', async (req, res) => {
     try {
-      const post = await createPost(req.body.content);
+      const post = await Post.createPost(req.body.content);
       res.send(post);
     } catch(error) {
       res.status(401).send({ message: error.message });
     }
   })
-  .put('/like', async (req, res) => {
+  .put('/likePost', async (req, res) => {
     try {
-      const post = await likePost(req.body.id);
+      const post = await Post.likePost(req.body.id);
       res.send(post);
     } catch(error) {
       res.status(401).send({ message: error.message });
     }
   })
-  .put('/update', async (req, res) => {
+  .put('/updatePost', async (req, res) => {
     try {
-      const post = await updatePost(req.body.id, req.body.content);
+      const post = await Post.updatePost(req.body.id, req.body.content);
       res.send(post);
     } catch(error) {
       res.status(401).send({ message: error.message });
     }
   })
-  .delete('/delete', async (req, res) => {
+  .delete('/deletePost', async (req, res) => {
     try {
-      const deletePost = await deletePost(req.body.id);
+      await Post.deletePost(req.body.id);
       res.send({ success: "Post deleted" });
     } catch(error) {
       res.status(401).send({ message: error.message });
