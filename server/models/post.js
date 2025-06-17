@@ -18,18 +18,18 @@ async function createPost(content){
 
 //Like a post
 async function likePost(postId) {
-    const post = await Post.findById(postId);
+    const post = await Post.findOne({"_id": postId});
     if (!post) {
         throw new Error("Post not found");
     }
     post.likes += 1;
-    await Post.findByIdAndUpdate(postId, { likes: post.likes + 1 });
+    await Post.findOne(postId, { likes: post.likes + 1 });
     return post;
 }
 
 //Update a post 
 async function updatePost(postId, newContent) {
-    const updatedPost = await Post.findByIdAndUpdate(postId, { content: newContent });
+    const updatedPost = await Post.updateOne({"_id": postId}, {$set: {content: newContent }});
     if (!updatedPost) {
         throw new Error("Post not found");
     }
@@ -38,11 +38,9 @@ async function updatePost(postId, newContent) {
 
 //Delete a post 
 async function deletePost(postId) {
-    const deletedPost = await Post.findByIdAndDelete(postId);
-    if (!deletedPost) {
-        throw new Error("Post not found");
-    }
-    return deletedPost;
+    await User.deleteOne({"_id": postId});
+
+    return deletePost;
 }
 
 module.exports = {

@@ -29,7 +29,7 @@ router
   })
   .delete('/delete', async (req, res) => {
     try {
-      const deletedPost = await deletePost(req.body.id);
+      const deletePost = await deletePost(req.body.id);
       res.send({ success: "Post deleted" });
     } catch(error) {
       res.status(401).send({ message: error.message });
