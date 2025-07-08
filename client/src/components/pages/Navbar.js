@@ -1,30 +1,37 @@
+import { Outlet, Link } from "react-router-dom";
+
 const Navbar = () => {
     return ( 
         <div>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
+        <div className="container-fluid">
+            <Link class="navbar-brand" to="/">Navbar</Link>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Profile</a>
+                <Link class="nav-link active" aria-current="page" to="/">About Us</Link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Login</a>
+                <Link class="nav-link" to="/login">Login</Link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link" href="#">Register</a>
+                <Link class="nav-link" to="/register">Register</Link>
                 </li>
                 <li class="nav-item">
-                <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                <Link class="nav-link" to="/books">Books</Link>
+                </li>
+                <li class="nav-item">
+                <Link class="nav-link" to="/profile">Profile</Link>
                 </li>
             </ul>
             </div>
         </div>
         </nav>
+
+        <Outlet />
         </div>
     )
 }

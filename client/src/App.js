@@ -1,9 +1,10 @@
 import './App.css';
-import Books from "./components/Books.js";
-import About from "./components/About.js";
-import Navbar from "./components/Navbar.js";
-import Login from './components/Loginform.js';
-import Register from './components/Registerform.js';
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Books from "./components/pages/Books.js";
+import About from "./components/pages/About.js";
+import Navbar from "./components/pages/Navbar.js";
+import Login from './components/pages/Loginform.js';
+import Register from './components/pages/Registerform.js';
 
 const books = [
     {
@@ -23,17 +24,23 @@ const books = [
 function App() {
   return (
     <div className="App">
-      <Navbar />
-      <Login />
-      <About />
       {/* Welcome to our App! */}
-      <hr>
-      </hr>
-      <h1 class="text-center"> Foods App </h1>
-      <div>
-      <Books books={books}/> 
-      <h1 class="text-center"> Register Here </h1>
-      <Register />
+      {/* <hr>
+      </hr> */}
+      {/* <h1 class="text-center"> Foods App </h1> */}
+      <div> 
+      {/* <h1 class="text-center"> Register Here </h1> */}
+      <BrowserRouter>
+        <Routes> 
+          <Route path='/' element={<Navbar />}>
+          <Route  index element={<About />}/> 
+          <Route path='books' element={<Books books={books}/>}/>
+          <Route path='register' element={<Register />} />
+          <Route path='login' element={<Login />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <hr></hr>
       </div>
     </div>
   );
