@@ -38,9 +38,8 @@ async function updatePost(postId, newContent) {
 
 //Delete a post 
 async function deletePost(postId) {
-    await User.deleteOne({"_id": postId});
-
-    return deletePost;
+    const result = await Post.deleteOne({"_id": postId});
+    return result;
 }
 
 module.exports = {

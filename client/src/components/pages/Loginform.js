@@ -5,18 +5,18 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({
-    email: '',
+    username: '',
     password: ''
   })
   
-  const {email, password} = user;
+  const {username, password} = user;
   const onChange = (e) => setUser({...user, [e.target.name]: e.target.value})
 
   const onSubmit = (e) => {
     e.preventDefault();
     fetchData("/user/login", 
       {
-      email,
+      username,
       password
       },
       "POST")
@@ -35,14 +35,14 @@ const Login = () => {
     <div>
       <form onSubmit={onSubmit}>
         <div className="mb-3">
-          <label htmlFor="email" className="form-label">Email</label>
+          <label htmlFor="username" className="form-label">Username</label>
           <input 
-            type="email" 
+            type="text" 
             className="form-control" 
-            id="email"
-            name='email'
+            id="username"
+            name='username'
             onChange={onChange}
-            value={email}
+            value={username}
             required
           />
         </div>
