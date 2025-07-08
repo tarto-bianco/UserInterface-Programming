@@ -1,4 +1,3 @@
-import { data } from "react-router-dom";
 import { fetchData } from "../../main.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +26,7 @@ const Register = () => {
       "POST")
       .then((data) => {
         if(!data.message) {
-          console.log(data)
+          localStorage.setItem('user', JSON.stringify(data));
           navigate("/profile")
         }
       })
@@ -54,7 +53,7 @@ const Register = () => {
         <div className="mb-3">
           <label htmlFor="email" className="form-label">Email</label>
           <input 
-            type="text" 
+            type="email" 
             className="form-control" 
             id="email"
             name='email'

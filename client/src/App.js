@@ -1,10 +1,10 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Books from "./components/pages/Books.js";
 import About from "./components/pages/About.js";
 import Navbar from "./components/pages/Navbar.js";
 import Login from './components/pages/Loginform.js';
 import Register from './components/pages/Registerform.js';
+import Profile from './components/pages/Profilepage.js';
 
 const books = [
     {
@@ -34,9 +34,9 @@ function App() {
         <Routes> 
           <Route path='/' element={<Navbar />}>
           <Route  index element={<About />}/> 
-          <Route path='books' element={<Books books={books}/>}/>
           <Route path='register' element={<Register />} />
           <Route path='login' element={<Login />} />
+          <Route path='profile' element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>
